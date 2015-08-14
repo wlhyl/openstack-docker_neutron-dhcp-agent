@@ -15,8 +15,13 @@ if [ -z "$RABBIT_PASSWORD" ];then
   exit 1
 fi
 
-if [ -z "$KEYSTONE_ENDPOINT" ];then
-  echo "error: KEYSTONE_ENDPOINT not set"
+if [ -z "$KEYSTONE_INTERNAL_ENDPOINT" ];then
+  echo "error: KEYSTONE_INTERNAL_ENDPOINT not set"
+  exit 1
+fi
+
+if [ -z "$KEYSTONE_ADMIN_ENDPOINT" ];then
+  echo "error: KEYSTONE_ADMIN_ENDPOINT not set"
   exit 1
 fi
 
@@ -44,8 +49,8 @@ CRUDINI='/usr/bin/crudini'
 
     $CRUDINI --del /etc/neutron/neutron.conf keystone_authtoken
 
-    $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken auth_uri http://$KEYSTONE_ENDPOINT:5000
-    $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://$KEYSTONE_ENDPOINT:35357
+    $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken auth_uri http://$KEYSTONE_INTERNAL_ENDPOINT:5000
+    $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://$KEYSTONE_ADMIN_ENDPOINT:35357
     $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken auth_plugin password
     $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken project_domain_id default
     $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken user_domain_id default
