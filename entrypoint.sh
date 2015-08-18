@@ -65,6 +65,8 @@ CRUDINI='/usr/bin/crudini'
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT interface_driver neutron.agent.linux.interface.OVSInterfaceDriver
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dhcp_driver neutron.agent.linux.dhcp.Dnsmasq
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dhcp_delete_namespaces True
-    $CRUDINI --del /etc/neutron/dhcp_agent.ini DEFAULT dnsmasq_config_file
+    $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dnsmasq_config_file /etc/neutron/dnsmasq-neutron.conf
+    
+    $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT enable_isolated_metadata True
  
 /usr/bin/supervisord -n
