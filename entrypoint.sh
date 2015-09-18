@@ -68,5 +68,7 @@ CRUDINI='/usr/bin/crudini'
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dnsmasq_config_file /etc/neutron/dnsmasq-neutron.conf
     
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT enable_isolated_metadata True
+    
+    touch /etc/neutron/dnsmasq-neutron.conf
  
 /usr/bin/supervisord -n
