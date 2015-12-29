@@ -6,6 +6,7 @@ MAINTAINER Zuhui Liu penguin_tux@live.com
 ENV BASE_VERSION 2015-07-16
 ENV OPENSTACK_VERSION kilo
 
+
 ADD entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
