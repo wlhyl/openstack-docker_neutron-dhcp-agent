@@ -59,13 +59,14 @@ CRUDINI='/usr/bin/crudini'
     $CRUDINI --set /etc/neutron/neutron.conf keystone_authtoken password $NEUTRON_PASS
     
     $CRUDINI --set /etc/neutron/neutron.conf DEFAULT core_plugin neutron.plugins.ml2.plugin.Ml2Plugin
-    $CRUDINI --set /etc/neutron/neutron.conf DEFAULT service_plugins neutron.services.l3_router.l3_router_plugin.L3RouterPlugin
+    $CRUDINI --set /etc/neutron/neutron.conf DEFAULT service_plugins router
     $CRUDINI --set /etc/neutron/neutron.conf DEFAULT allow_overlapping_ips True
 
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT interface_driver neutron.agent.linux.interface.OVSInterfaceDriver
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dhcp_driver neutron.agent.linux.dhcp.Dnsmasq
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dhcp_delete_namespaces True
-    $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dnsmasq_config_file /etc/neutron/dnsmasq-neutron.conf
+    # 下面的参数可以在部署完成后手动设置
+    # $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT dnsmasq_config_file /etc/neutron/dnsmasq-neutron.conf
     
     $CRUDINI --set /etc/neutron/dhcp_agent.ini DEFAULT enable_isolated_metadata True
     
